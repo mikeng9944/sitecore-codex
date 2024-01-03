@@ -39,7 +39,7 @@ def main():
         # Provide feedback while API call is made
         with st.spinner("Generating code..."):
             # prompt_text = f"\"\"\"\nWrite a {name} only using HTML \n\"\"\""
-            prompt_text = f"<!-- Create a web page of {name} --><!-- Only using HTML for the web page -->\n<!DOCTYPE html>"
+            prompt_text = f"<!-- Create a web page of {name} -->\n<!-- Only using HTML for the web page -->\n<!-- Do not use php as data -->\n<!DOCTYPE html>"
             code_response = get_codex_response(prompt_text)
         
         if code_response:
