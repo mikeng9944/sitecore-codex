@@ -16,7 +16,7 @@ def get_codex_response(prompt_text):
         response = openai.Completion.create(
             engine="code",
             prompt=prompt_text,
-            temperature=0.5,  # Adjusted for slightly more deterministic output
+            temperature=1.0,  # Adjusted for slightly more deterministic output
             max_tokens=7000,  # Increased for longer responses
             top_p=1,
             frequency_penalty=0,
@@ -39,7 +39,7 @@ def main():
         # Provide feedback while API call is made
         with st.spinner("Generating code..."):
             # prompt_text = f"\"\"\"\nWrite a {name} only using HTML \n\"\"\""
-            prompt_text = f"<!-- Create a web page of {name} -->\n<!-- Only using HTML for the web page -->\n<!-- Do not use php as data -->\n<!DOCTYPE html>"
+            prompt_text = f"<!-- Create a web page of {name} -->\n<!-- Only using HTML for the web page -->\n<!-- Only use inline CSS for styling -->\n<!DOCTYPE html>\n<html>\n<head><style></style></head>"
             code_response = get_codex_response(prompt_text)
         
         if code_response:
